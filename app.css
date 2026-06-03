@@ -1,0 +1,373 @@
+/* ============================================================
+   Vega Hearing Assistance Check — mobile app styles
+   Composes on top of vega-tokens.css
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+/* ---- App shell: fills the iOS frame content area ---- */
+.ha-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--grey-50);
+  font-family: var(--font-body);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------- Top bar ---------- */
+.ha-topbar {
+  flex-shrink: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--line-1);
+  padding: 58px 14px 0;        /* clear the status bar / island */
+}
+.ha-topbar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+}
+.ha-back {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--grey-100);
+  color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-in-out);
+}
+.ha-back:hover { background: var(--grey-200); }
+.ha-back:disabled { opacity: 0; pointer-events: none; }
+.ha-topbar-titles { flex: 1; min-width: 0; }
+.ha-topbar-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--vega-red);
+  line-height: 1;
+}
+.ha-topbar-title {
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  line-height: 1.25; margin-top: 3px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ha-step-count {
+  font-size: 12px; font-weight: 700; color: var(--grey-500);
+  flex-shrink: 0; font-variant-numeric: tabular-nums;
+}
+/* progress track */
+.ha-progress {
+  height: 3px; background: var(--grey-200);
+  position: relative; overflow: hidden;
+}
+.ha-progress-fill {
+  position: absolute; inset: 0 auto 0 0;
+  background: var(--vega-red);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+/* ---------- Scroll body ---------- */
+.ha-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 22px 20px 28px;
+}
+.ha-body.is-dark { background: var(--black); color: #fff; }
+
+/* ---------- Bottom action bar ---------- */
+.ha-actionbar {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid var(--line-1);
+  padding: 12px 18px 30px;     /* clear the home indicator */
+  display: flex;
+  gap: 10px;
+}
+.ha-actionbar .ha-btn { flex: 1; }
+
+/* ---------- Buttons ---------- */
+.ha-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+  padding: 15px 22px;
+  border-radius: var(--radius-pill);
+  border: 2.5px solid transparent;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  transition: all var(--dur-base) var(--ease-in-out);
+  line-height: 1; white-space: nowrap;
+}
+.ha-btn:disabled { opacity: 0.4; pointer-events: none; }
+.ha-btn-primary { background: var(--vega-red); color: #fff; border-color: var(--vega-red); }
+.ha-btn-primary:hover { background: var(--vega-red-600); border-color: var(--vega-red-600); }
+.ha-btn-ghost { background: #fff; color: var(--ink); border-color: var(--grey-300); }
+.ha-btn-ghost:hover { background: var(--grey-100); }
+.ha-btn-dark { background: var(--black); color: #fff; border-color: var(--black); }
+.ha-btn-dark:hover { background: var(--grey-800); }
+.ha-btn-sm { padding: 11px 18px; font-size: 12px; }
+
+/* ---------- Type ---------- */
+.ha-h1 {
+  font-weight: 300; font-size: 30px; line-height: 1.18;
+  color: var(--ink); margin: 0 0 10px; letter-spacing: -0.01em;
+}
+.ha-lede {
+  font-weight: 300; font-size: 15px; line-height: 1.55;
+  color: var(--grey-600); margin: 0 0 22px;
+}
+.ha-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--vega-red);
+  margin: 0 0 10px;
+}
+.ha-section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--grey-500);
+  margin: 26px 0 12px;
+}
+.ha-section-label:first-child { margin-top: 0; }
+
+/* ---------- Field ---------- */
+.ha-field { margin-bottom: 16px; }
+.ha-label {
+  display: block;
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  margin-bottom: 7px;
+}
+.ha-label .opt { color: var(--grey-400); font-weight: 600; }
+.ha-hint {
+  font-size: 12px; font-weight: 400; color: var(--grey-500);
+  margin: -2px 0 7px; line-height: 1.4;
+}
+.ha-input, .ha-textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 400; color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--grey-300);
+  padding: 13px 16px;
+  border-radius: var(--radius-pill);
+  transition: border-color var(--dur-fast) var(--ease-in-out);
+}
+.ha-textarea { border-radius: var(--radius-input); resize: none; line-height: 1.45; }
+.ha-input:focus, .ha-textarea:focus { outline: none; border-color: var(--ink); }
+.ha-input::placeholder, .ha-textarea::placeholder { color: var(--grey-400); }
+.ha-input.has-suffix { padding-right: 52px; }
+.ha-input-wrap { position: relative; }
+.ha-input-suffix {
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  font-size: 14px; font-weight: 700; color: var(--grey-500);
+  pointer-events: none;
+}
+
+/* ---------- Segmented control ---------- */
+.ha-seg {
+  display: grid;
+  gap: 7px;
+}
+.ha-seg-opt {
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 700;
+  padding: 13px 8px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--grey-300);
+  background: #fff; color: var(--grey-600);
+  cursor: pointer; text-align: center;
+  transition: all var(--dur-fast) var(--ease-in-out);
+}
+.ha-seg-opt:hover { border-color: var(--grey-400); }
+.ha-seg-opt.is-on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.ha-seg-opt.is-on.tone-good { background: var(--success); border-color: var(--success); }
+.ha-seg-opt.is-on.tone-bad { background: var(--vega-red); border-color: var(--vega-red); }
+.ha-seg-opt.is-on.tone-warn { background: var(--warning); border-color: var(--warning); }
+
+/* ---------- Yes/No pill pair ---------- */
+.ha-yesno { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ---------- Cards / list rows ---------- */
+.ha-card {
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.ha-row {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color var(--dur-fast) var(--ease-in-out), box-shadow var(--dur-fast) var(--ease-in-out);
+}
+.ha-row:hover { border-color: var(--grey-400); box-shadow: var(--shadow-sm); }
+.ha-row-icon {
+  width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--grey-100); color: var(--grey-600);
+}
+.ha-row-main { flex: 1; min-width: 0; }
+.ha-row-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.ha-row-sub { font-size: 12.5px; font-weight: 400; color: var(--grey-500); margin-top: 2px; }
+.ha-row-chev { color: var(--grey-400); flex-shrink: 0; }
+
+/* status chips */
+.ha-chip {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  display: inline-flex; align-items: center; gap: 5px;
+  flex-shrink: 0;
+}
+.ha-chip.todo { background: var(--grey-100); color: var(--grey-500); }
+.ha-chip.done { background: #E4F2EA; color: var(--success); }
+.ha-chip.na   { background: var(--grey-200); color: var(--grey-600); }
+.ha-chip.fail { background: var(--vega-red-50); color: var(--vega-red-600); }
+.ha-chip.pass { background: #E4F2EA; color: var(--success); }
+
+/* eval flag inline */
+.ha-flag {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 13px; border-radius: var(--radius-md);
+  margin-top: 8px;
+}
+.ha-flag.ok   { background: #E4F2EA; color: var(--success); }
+.ha-flag.warn { background: var(--vega-red-50); color: var(--vega-red-600); }
+
+/* ---------- Photo capture ---------- */
+.ha-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--grey-300);
+  background: var(--grey-100);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; cursor: pointer; overflow: hidden;
+  color: var(--grey-500);
+  transition: border-color var(--dur-fast) var(--ease-in-out), background var(--dur-fast) var(--ease-in-out);
+}
+.ha-photo:hover { border-color: var(--vega-red); background: var(--vega-red-50); color: var(--vega-red); }
+.ha-photo.filled { border-style: solid; border-color: var(--line-2); background: var(--grey-800); cursor: default; }
+.ha-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ha-photo-label { font-size: 13px; font-weight: 700; }
+.ha-photo-sub { font-size: 11.5px; font-weight: 400; }
+.ha-photo-retake {
+  position: absolute; right: 10px; bottom: 10px; z-index: 2;
+  background: rgba(0,0,0,0.62); color: #fff;
+  border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 7px 13px; border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; gap: 5px;
+}
+.ha-photo-retake:hover { background: rgba(0,0,0,0.8); }
+
+/* ---------- Hero / start screen ---------- */
+.ha-hero {
+  height: 100%;
+  display: flex; flex-direction: column;
+  background: var(--black);
+  color: #fff;
+  position: relative;
+}
+.ha-hero-top {
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 70px 30px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.ha-hero-logo { width: 96px; margin-bottom: 32px; }
+.ha-hero-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--vega-red-300);
+  margin: 0 0 16px;
+}
+.ha-hero-h1 {
+  font-weight: 300; font-size: 38px; line-height: 1.12;
+  margin: 0 0 18px; letter-spacing: -0.015em;
+}
+.ha-hero-sub {
+  font-weight: 300; font-size: 15px; line-height: 1.55;
+  color: var(--fg-on-dark-2); margin: 0; max-width: 30ch;
+}
+.ha-hero-glow {
+  position: absolute; width: 340px; height: 340px; border-radius: 50%;
+  background: var(--vega-red-gradient-diag);
+  filter: blur(70px); opacity: 0.34;
+  right: -120px; top: -80px; pointer-events: none;
+}
+.ha-hero-foot { padding: 0 30px 40px; }
+
+/* divider */
+.ha-divider { height: 1px; background: var(--line-1); margin: 22px 0; border: none; }
+
+/* small grid for paired inputs */
+.ha-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ha-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+/* spec note (IEC tolerance reminder) */
+.ha-note {
+  background: var(--grey-100);
+  border-left: 3px solid var(--vega-red);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 11px 14px;
+  font-size: 12.5px; line-height: 1.5; color: var(--grey-700);
+  margin-bottom: 18px;
+}
+.ha-note b { color: var(--ink); font-weight: 700; }
+
+/* summary list (declaration) */
+.ha-summary { margin-bottom: 18px; }
+.ha-summary-item {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 11px 0; border-bottom: 1px solid var(--line-1);
+}
+.ha-summary-item:last-child { border-bottom: none; }
+.ha-summary-k { font-size: 13px; color: var(--grey-600); }
+.ha-summary-v { font-size: 14px; font-weight: 700; color: var(--ink); text-align: right; }
+
+/* big decision toggle (pass/fail) */
+.ha-decision { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 6px 0 4px; }
+.ha-decision-opt {
+  border: 2.5px solid var(--grey-300); background: #fff;
+  border-radius: var(--radius-lg); padding: 20px 12px;
+  cursor: pointer; text-align: center;
+  font-family: var(--font-body);
+  transition: all var(--dur-fast) var(--ease-in-out);
+}
+.ha-decision-opt .dlabel { font-size: 17px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.ha-decision-opt .dsub { font-size: 11.5px; color: var(--grey-500); margin-top: 4px; }
+.ha-decision-opt.pass.is-on { border-color: var(--success); background: #E4F2EA; color: var(--success); }
+.ha-decision-opt.fail.is-on { border-color: var(--vega-red); background: var(--vega-red-50); color: var(--vega-red-600); }
+
+/* completion screen */
+.ha-done-wrap { text-align: center; padding-top: 30px; }
+.ha-done-mark {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: #E4F2EA; color: var(--success);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+}
+.ha-done-mark.fail { background: var(--vega-red-50); color: var(--vega-red-600); }
+
+/* hide native number spinners */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }

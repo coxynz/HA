@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Vega · Hearing Assistance Check</title>
+  <link rel="stylesheet" href="vega-tokens.css" />
+  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="report.css" />
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body {
+      background:
+        radial-gradient(1100px 600px at 80% -5%, rgba(196,30,58,0.12), transparent 60%),
+        #15161A;
+    }
+    #root { height: 100%; }
+    .stage {
+      height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .device-scale { transform-origin: center center; }
+    /* hide scrollbars on the stage */
+    .ha-body::-webkit-scrollbar { width: 0; background: transparent; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="print-root"></div>
+
+  <!-- React + Babel (pinned) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- App scripts -->
+  <script type="text/babel" src="ios-frame.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="ui.jsx"></script>
+  <script type="text/babel" src="report.jsx"></script>
+  <script type="text/babel" src="screens-a.jsx"></script>
+  <script type="text/babel" src="screens-b.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- Fit the device to the viewport -->
+  <script>
+    function fitDevice() {
+      var el = document.querySelector('.device-scale');
+      if (!el) return;
+      var W = 402, H = 874, pad = 24;
+      var s = Math.min((window.innerWidth - pad) / W, (window.innerHeight - pad) / H, 1.05);
+      el.style.transform = 'scale(' + s + ')';
+    }
+    window.addEventListener('resize', fitDevice);
+    var fitTimer = setInterval(fitDevice, 200);
+    setTimeout(function () { clearInterval(fitTimer); }, 3000);
+  </script>
+</body>
+</html>
