@@ -253,12 +253,20 @@ function PreviewOverlay({ data, onClose }) {
   );
 }
 
+const isMobile = window.matchMedia('(max-width: 500px)').matches;
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className="stage">
-    <div className="device-scale">
-      <IOSDevice>
-        <App />
-      </IOSDevice>
+  isMobile ? (
+    <div style={{ width: '100%', height: '100%' }}>
+      <App />
     </div>
-  </div>
+  ) : (
+    <div className="stage">
+      <div className="device-scale">
+        <IOSDevice>
+          <App />
+        </IOSDevice>
+      </div>
+    </div>
+  )
 );

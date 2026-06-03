@@ -371,3 +371,19 @@
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 input[type=number] { -moz-appearance: textfield; }
+
+/* ---- Real device: full-screen layout with safe-area insets ---- */
+@media (max-width: 500px) {
+  .ha-topbar {
+    padding-top: calc(env(safe-area-inset-top, 20px) + 8px);
+  }
+  .ha-actionbar {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  }
+  .ha-hero-top {
+    padding-top: calc(env(safe-area-inset-top, 20px) + 50px);
+  }
+  .ha-hero-foot {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 40px);
+  }
+}
