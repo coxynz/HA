@@ -54,7 +54,7 @@ function Report({ data }) {
       <div className="rp-page">
         <div className="rp-head">
           <div>
-            <img className="rp-head-logo" src="assets/vega_logo_white.png" alt="Vega" />
+            <img className="rp-head-logo" src="assets/vega_logo.png" alt="Vega" />
             <p className="rp-head-eyebrow">Vega NZ · Field Service Report</p>
             <h1 className="rp-head-title">Hearing Assistance Commissioning</h1>
           </div>

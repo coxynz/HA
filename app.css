@@ -293,7 +293,7 @@
   position: relative;
   overflow: hidden;
 }
-.ha-hero-logo { width: 96px; margin-bottom: 32px; }
+.ha-hero-logo { width: 96px; margin-bottom: 32px; border-radius: 6px; }
 .ha-hero-eyebrow {
   font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--vega-red-300);

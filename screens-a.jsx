@@ -9,8 +9,7 @@ function StartScreen({ hasSaved, onStart, onResume }) {
     <div className="ha-hero">
       <div className="ha-hero-top">
         <div className="ha-hero-glow" />
-        <img className="ha-hero-logo" src="assets/vega_logo_white.png"
-             style={{ filter: 'brightness(0) invert(1)' }} alt="Vega" />
+        <img className="ha-hero-logo" src="assets/vega_logo.png" alt="Vega" />
         <div className="ha-hero-eyebrow">Vega NZ · Field Service</div>
         <h1 className="ha-hero-h1">Hearing<br/>Assistance Check</h1>
         <p className="ha-hero-sub">
